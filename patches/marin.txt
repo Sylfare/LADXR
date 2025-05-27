@@ -399,3 +399,14 @@ This seed brought to you by Gamer Supps.
 Hey VSauce, ##### here.
 Do not - and i really mean it - do NOT mention raid shadow legends on this island
 This run is sponsored by Daid Shadow Legends!
+##### this is the <ord100> time in a row you've woke up in my bed.
+Talk to me <rnd100> times and you might get a surprise!
+{SWORD} for only <rnd999> {RUPEES}!
+{BOMB} for only <rnd999> {RUPEES}!
+{GOLD_LEAF} for only <rnd999> {RUPEES}!
+{OCARINA} for only <rnd999> {RUPEES}!
+{PEGASUS_BOOTS} for only <rnd999> {RUPEES}!
+{FEATHER} for only <rnd999> {RUPEES}!
+20 {RUPEES} for only <rnd999> {RUPEES}!
+<rnd999> {RUPEES} for only <rnd999> {RUPEES}!
+Nothing for only <rnd999> {RUPEES}!

@@ -1,6 +1,7 @@
 from typing import Optional
 
 from locations.items import *
+from random import randrange
 
 class Error(Exception):
     pass
@@ -150,6 +151,23 @@ _NAMES = {
 }
 
 
+def randomOrdinal(min: int, max: int) -> bytes:
+	n = str(randrange(min, max))
+	match n[-1]:
+		case "1":
+			ordinal = "st"
+		case "2":
+			ordinal = "nd"
+		case "3":
+			ordinal = "rd"
+		case _:
+			ordinal = "th"
+	return "{}{}".format(n, ordinal).encode('ascii')
+
+def randomNumber(min: int, max: int) -> bytes:
+	return str(randrange(min, max)).encode('ascii')
+
+
 _CHARACTERS = {
     b"'":  b"^",
     b'<agrave>': b'\x80',
@@ -198,18 +216,20 @@ _CHARACTERS = {
     b'<arrowU>': b'\xF0',
     b'<arrowD>': b'\xF1',
     b'<arrowL>': b'\xF2',
-    b'<arrowR>': b'\xF3',
+    b'<arrowR>': b'\xF3'
 }
 
 def setReplacementName(key: str, value: str) -> None:
     _NAMES[key] = value
-
 
 def formatText(instr: str, *, center: bool = False, ask: Optional[str] = None) -> bytes:
     instr = instr.format(**_NAMES)
     s = instr.encode("ascii")
     for character, encodedCharacter in _CHARACTERS.items():
         s = s.replace(character, encodedCharacter)
+    s = s.replace(b'<rnd100>', randomNumber(1,101)) # [1;101[, so [1;100]
+    s = s.replace(b'<ord100>', randomOrdinal(1,101))
+    s = s.replace(b'<rnd999>', randomNumber(1,1000))
 
     def padLine(line: bytes) -> bytes:
         return line + b' ' * (16 - len(line))
