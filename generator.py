@@ -177,7 +177,8 @@ def generateRom(args, settings, seed, logic, *, rnd=None):
     patches.bomb.onlyDropBombsWhenHaveBombs(rom)
     patches.colorBook.fixColorBook(rom)
     patches.aesthetics.noSwordMusic(rom)
-    patches.aesthetics.reduceMessageLengths(rom, rnd)
+    # TODO hardcoded name, for now
+    patches.aesthetics.applyTextPack(rom, "base", rnd)
     hints.addHints(rom, rnd, logic.iteminfo_list)
     patches.aesthetics.allowColorDungeonSpritesEverywhere(rom)
     if settings.overworld == "alttp" or settings.overworld == "random":

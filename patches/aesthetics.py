@@ -520,6 +520,18 @@ def getMarinStartingText(rnd: random.Random):
 
     return formatText(line)
 
+def applyTextPack(rom, pack_name, rnd):
+    rom.texts[0x01] = getMarinStartingText(rnd)
+
+    lines = json.load(open(os.path.join(os.path.dirname(__file__), "..","text", pack_name + ".json"), "rt"))
+    for offsetString, line in lines.items():
+        offset = int(offsetString, 16)
+        if isinstance(line, str):
+            rom.texts[offset] = formatText(line)
+        else:
+            rom.texts[offset] = formatText(line["text"], ask=line.get("ask", None), center=line.get("center", False))
+    
+
 def reduceMessageLengths(rom, rnd):
     # Into text from Marin. Got to go fast, so less text. (This intro text is very long)
     rom.texts[0x01] = getMarinStartingText(rnd)
