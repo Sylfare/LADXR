@@ -1,5 +1,4 @@
 from assembler import ASM
-from utils import formatText
 
 
 def updateTarin(rom):
@@ -51,5 +50,4 @@ def updateTarin(rom):
     rom.patch(0x05, 0x0C94, "FF473152C5280000", "FD2ED911CE100000")
     rom.patch(0x05, 0x0CB0, ASM("ld hl, $DC88"), ASM("ld hl, $DC80"))
 
-    # Patch the text that Tarin uses to give your shield back.
-    rom.texts[0x54] = formatText("#####, it is dangerous to go alone!\nTake this!")
+    # Patch the text 0x54 that Tarin uses to give your shield back.

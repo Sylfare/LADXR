@@ -61,6 +61,3 @@ def addHints(rom, rnd, spots):
         else:
             hint = rnd.choice(hints).format(*rnd.choice(useless_hint))
         rom.texts[text_id] = formatText(hint)
-
-    for text_id in range(0x200, 0x20C, 2):
-        rom.texts[text_id] = formatText("Read this book?", ask="YES  NO")

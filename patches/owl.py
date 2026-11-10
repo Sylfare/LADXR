@@ -1,6 +1,5 @@
 from roomEditor import RoomEditor
 from assembler import ASM
-from utils import formatText
 
 
 def removeOwlEvents(rom):
@@ -23,8 +22,6 @@ def removeOwlEvents(rom):
 
 
     # Patch the owl entity into a ghost to allow refill of powder/bombs/arrows
-    rom.texts[0xC0] = formatText("Everybody hates me, so I give away free things in the hope people will love me. Want something?", ask="Okay No")
-    rom.texts[0xC1] = formatText("Good for you.")
     rom.patch(0x06, 0x27F5, 0x2A77, ASM("""
     ; Check if we have powder or bombs.
     ld   e, INV_SIZE

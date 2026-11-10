@@ -1,5 +1,4 @@
 from assembler import ASM
-from utils import formatText
 
 
 def patchRooster(rom):
@@ -22,8 +21,7 @@ def patchRooster(rom):
         rst  $08
     """), fill_nop=True)
 
-    # Reuse unused evil eagle text slot for rooster message
-    rom.texts[0x0B8] = formatText("Got the {ROOSTER}!")
+    # Reuse unused evil eagle text slot 0xB8 for rooster message
 
     # Allow rooster pickup with special rooster item
     rom.patch(0x19, 0x1ABC, ASM("cp $03"), ASM("cp $0F"))

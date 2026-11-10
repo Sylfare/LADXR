@@ -1,5 +1,4 @@
 from assembler import ASM
-from utils import formatText
 
 
 def upgradeMadBatter(rom):
@@ -38,7 +37,3 @@ def upgradeMadBatter(rom):
     """), fill_nop=True)
     # Setup the default items
     rom.patch(0x18, 0x0F90, "406060", "848586")
-
-    rom.texts[0xE2] = formatText("You can now carry more Magic Powder!")
-    rom.texts[0xE3] = formatText("You can now carry more Bombs!")
-    rom.texts[0xE4] = formatText("You can now carry more Arrows!")

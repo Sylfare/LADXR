@@ -1,6 +1,4 @@
 from assembler import ASM
-from utils import formatText
-
 
 def setStartHealth(rom, amount):
     rom.patch(0x01, 0x0B1C, ASM("ld  [hl], $03"), ASM("ld  [hl], $%02X" % (amount)))  # max health of new save
@@ -8,9 +6,7 @@ def setStartHealth(rom, amount):
 
 
 def upgradeHealthContainers(rom):
-    # Reuse 2 unused shop messages for the heart containers.
-    rom.texts[0x2A] = formatText("You found a {HEART_CONTAINER}!")
-    rom.texts[0x2B] = formatText("You lost a heart!")
+    # Reuse 2 unused shop messages 0x2a and 0x2b for the heart containers.
 
     rom.patch(0x03, 0x19DC, ASM("""
         ld   de, $59D8
