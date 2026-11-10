@@ -1,7 +1,7 @@
 {
     "0xEA": "You've got a Guardian Acorn!",
-    "0xEB": "You've got a Guardian Acorn!",
-    "0xEC": "You've got a Guardian Acorn!",
+    "0xEB": {"copy":"0xEA"},
+    "0xEC": {"copy":"0xEA"},
     "0x08": "You got a Piece of Power!",
     "0xEF": "You found a {SEASHELL}!",
     "0xA7": "You've got the {COMPASS}!",

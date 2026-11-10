@@ -528,6 +528,8 @@ def applyTextPack(rom, pack_name, rnd):
         offset = int(offsetString, 16)
         if isinstance(line, str):
             rom.texts[offset] = formatText(line)
+        elif "copy" in line:
+            rom.texts[offset] = rom.texts[int(line["copy"], 16)]
         else:
             rom.texts[offset] = formatText(line["text"], ask=line.get("ask", None), center=line.get("center", False))
     
